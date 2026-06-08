@@ -1,0 +1,23 @@
+{
+  "name": "resumeiq-ai",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/frontend",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev --workspace @resumeiq/web",
+    "build:web": "npm run build --workspace @resumeiq/web",
+    "lint:web": "npm run lint --workspace @resumeiq/web",
+    "test:web": "npm run test --workspace @resumeiq/web",
+    "format:check:web": "npm run format:check --workspace @resumeiq/web",
+    "format:check": "npm run format:check:web",
+    "lint": "npm run lint:web",
+    "build": "npm run build:web"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": ">=11.0.0"
+  }
+}

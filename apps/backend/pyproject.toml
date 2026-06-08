@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "resumeiq-api"
+version = "0.1.0"
+description = "ResumeIQ AI backend service"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "alembic",
+  "asyncpg",
+  "celery",
+  "fastapi",
+  "httpx",
+  "pydantic",
+  "pydantic-settings",
+  "python-json-logger",
+  "redis",
+  "sqlalchemy",
+  "psycopg[binary]",
+  "uvicorn[standard]"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "pytest-asyncio",
+  "ruff"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
