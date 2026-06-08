@@ -2,14 +2,14 @@
 
 ## Objective
 
-Establish a production-grade baseline for ResumeIQ AI with a scalable monorepo layout, a typed Next.js frontend shell, a service-layer FastAPI backend, Docker-ready infrastructure, health-check APIs, environment-driven configuration, and phase documentation.
+Establish a production-grade baseline for ResumeIQ AI with a scalable monorepo layout, a typed Next.js frontend shell, a service-layer FastAPI backend, deployment-ready configuration for Render and Vercel, health-check APIs, and phase documentation.
 
 ## Architecture Decisions
 
 - Use `apps/frontend`, `apps/backend`, `packages/shared`, and `AI` so the interface, API, shared contracts, and intelligence workflows can evolve independently without coupling.
 - Start with a `system` capability slice instead of fake business logic so health, metadata, observability, and platform contracts are real from day one.
 - Use App Router on the frontend and service-layer routing on the backend to preserve modular growth for resume parsing, JD analysis, ATS scoring, and orchestration later.
-- Standardize environment-based configuration for all infra dependencies to avoid secret leakage and keep Docker, local development, and cloud deployment aligned.
+- Standardize environment-based configuration for Render, Vercel, Clerk, PostgreSQL, Redis, and Qdrant without adding unused deployment layers.
 - Add truthful AI policy scaffolding up front so later optimization flows inherit the no-fabrication rule.
 
 ## Implementation Steps
@@ -17,18 +17,15 @@ Establish a production-grade baseline for ResumeIQ AI with a scalable monorepo l
 1. Create the monorepo root, workspace configuration, `.gitignore`, and root README.
 2. Scaffold a Next.js frontend with strict TypeScript, TailwindCSS, React Query, Zustand, Zod, React Hook Form, and Framer Motion.
 3. Scaffold a FastAPI backend with Pydantic settings, structured logging, health endpoints, service-layer organization, async dependency checks, and Celery bootstrap.
-4. Add Dockerfiles and `docker-compose.yml` for web, API, PostgreSQL, Redis, and Qdrant.
+4. Prepare deployment-ready env architecture for backend, frontend, PostgreSQL, Redis, and Qdrant.
 5. Document installation, validation, and run instructions for this phase.
 
 ## Files Created
 
 - `.gitignore`
-- `.env.example`
+- `.env`
 - `package.json`
 - `README.md`
-- `docker-compose.yml`
-- `infrastructure/docker/api.Dockerfile`
-- `infrastructure/docker/web.Dockerfile`
 - `docs/phases/phase-01-foundation.md`
 - `apps/frontend/*`
 - `apps/backend/*`
@@ -75,10 +72,6 @@ cd ../..
 
 ## Startup Instructions
 
-```bash
-docker compose up --build
-```
-
 ## Folder Structure
 
 ```text
@@ -87,8 +80,6 @@ apps/
   backend/
 packages/
   shared/
-infrastructure/
-  docker/
 AI/
 docs/
 ```

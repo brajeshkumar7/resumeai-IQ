@@ -11,11 +11,13 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@clerk/nextjs": "latest",
     "@resumeiq/shared": "file:../../packages/shared",
     "@hookform/resolvers": "latest",
     "@tanstack/react-query": "latest",
     "clsx": "latest",
     "framer-motion": "latest",
+    "lucide-react": "latest",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",

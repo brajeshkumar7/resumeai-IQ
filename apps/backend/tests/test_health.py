@@ -21,3 +21,15 @@ def test_system_meta_endpoint() -> None:
     payload = response.json()
     assert payload["success"] is True
     assert "guardrails" in payload["data"]
+
+
+def test_auth_session_requires_authentication() -> None:
+    response = client.get("/api/v1/auth/session")
+
+    assert response.status_code == 401
+
+
+def test_user_profile_requires_authentication() -> None:
+    response = client.get("/api/v1/users/me")
+
+    assert response.status_code == 401

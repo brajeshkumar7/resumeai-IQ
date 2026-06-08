@@ -1,9 +1,0 @@
-node_modules
-apps/frontend/.next
-apps/backend/.pytest_cache
-apps/backend/.ruff_cache
-__pycache__
-*.pyc
-*.pyo
-*.pyd
-.git

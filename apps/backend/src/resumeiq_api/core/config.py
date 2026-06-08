@@ -6,7 +6,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=(".env", "../../.env"),
         env_prefix="RESUMEIQ_",
         extra="ignore",
     )
@@ -23,8 +23,9 @@ class Settings(BaseSettings):
     qdrant_url: str = "http://localhost:6333"
     allowed_origins: list[str] = Field(default_factory=lambda: ["http://localhost:3000"])
     openrouter_api_key: str | None = None
-    aws_region: str | None = None
-    aws_s3_bucket: str | None = None
+    clerk_jwks_url: str | None = None
+    clerk_issuer: str | None = None
+    clerk_audience: str | None = None
 
 
 @lru_cache
